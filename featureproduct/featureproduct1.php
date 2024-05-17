@@ -1,0 +1,57 @@
+<?php
+$sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+$ids = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        if ($row['type'] !== 'office chairs') {
+            $ids[] = $row["id"];
+        }
+    }
+    $randomIds = array();
+    for ($i = 0; $i < 1; $i++) {
+        $randomIndex = mt_rand(0, count($ids) - 1);
+        $randomId = $ids[$randomIndex];
+        if (!in_array($randomId, $randomIds)) {
+            $randomIds[] = $randomId;
+        }
+    }
+    foreach ($randomIds as $id) {
+        $sql = "SELECT p.*, pi.image_path 
+                FROM products p 
+                LEFT JOIN product_images pi ON p.id = pi.product_id 
+                WHERE p.id ={$id}";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $type = $row['type'];
+                if ($type == 'mattress' || $type == 'sofas and sofa sets' || $type == 'dining set') {
+                    echo '<div class="col-lg-3 col-md-6 col-sm-12 card border-0" style="width: 400px; overflow:auto">' .
+                        '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
+                        '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
+                        '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: cover;"/>' .
+                        '</div></a>' .
+                        '</div> ';
+                } else if ($type == 'shoes' || $type == 'television' || $type == 'headphone / earphone' || $type == 'mobile' || $type == 'watches' || $type == 'laptops') {
+                    echo '<div class="col-lg-3 col-md-6 col-sm-12 card border-0" style="width: 400px; overflow:auto">' .
+                        '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
+                        '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
+                        '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .
+                        '</div></a>' .
+                        '</div> ';
+                } else {
+                    echo '<div class="col-lg-3 col-md-6 col-sm-12 card border-0" style="width: 300px; overflow:auto">' .
+                        '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
+                        '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
+                        '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .
+                        '</div></a>' .
+                        '</div> ';
+
+                }
+            }
+        } else {
+            echo "No data found for ID: $id<br>";
+        }
+    }
+}
+?>

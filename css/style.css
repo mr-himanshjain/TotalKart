@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------------custom bootstrap */
+.card {
+  margin: 5px 1%;
+  z-index: 1;
+}
+
+.firstCard .row {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.usersection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+@media (min-width: 576px) {
+  .col-sm-12 {
+    flex: 0 0 auto;
+    width: 98%;
+  }
+}
+@media (min-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 48%;
+  }
+  .viewAndDetail {
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .col-lg-3 {
+    flex: 0 0 auto;
+    width: 23%;
+  }
+}
+@media (max-width: 767px) {
+  .viewAndDetail {
+    height: 600px;
+  }
+}
+label {
+  font-size: 20px;
+  font-family: Arial;
+  margin-bottom: 5px;
+}
