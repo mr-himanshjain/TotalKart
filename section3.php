@@ -4,7 +4,7 @@
     $sql = "SELECT p.*, pi.image_path 
     FROM products p 
     LEFT JOIN product_images pi ON p.id = pi.product_id 
-    WHERE p.type = 'watches'";
+    WHERE p.category = 'watches'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -19,7 +19,7 @@
                 '</div>' .
                 '<div class="card-body">' .
                 '<h5 class="card-title">' . $name . '</h5>' .
-                '<p class="card-text">' . $row['type'] . '</p>' .
+                '<p class="card-text">' . $row['category'] . '</p>' .
                 '</div>' .
                 '<ul class="list-group list-group-flush">' .
                 '<li class="list-group-item">Price: ' . $row['price'] . '</li>' .

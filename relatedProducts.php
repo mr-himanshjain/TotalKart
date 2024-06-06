@@ -3,16 +3,18 @@
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
-
-$sql = "SELECT type FROM products where id={$id}";
+if (isset($_GET['Product_id'])) {
+    $id = $_GET['Product_id'];
+}
+$sql = "SELECT category FROM products where id={$id}";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $type = $row['type'];
+        $category = $row['category'];
     }
 }
 
-$sql = "SELECT id FROM products where type='{$type}'";
+$sql = "SELECT id FROM products where category='{$category}'";
 $result = $conn->query($sql);
 $ids = array();
 if ($result->num_rows > 0) {

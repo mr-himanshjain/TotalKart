@@ -1,17 +1,11 @@
 <?php
-include "config.php";
-session_start();
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
-
-if (isset($_COOKIE['token'])) {
-    $token = $_COOKIE['token'];
-    $decoded = JWT::decode($token, new key($key, 'HS256'));
-    $user_id = $decoded->sub->id;
-}
-if (isset($_GET['id'])) {
-    $product_id = $_GET['id'];
-}
+// Retrieve user_id and Product_id from the URL parameters
+$user_id = $_GET['user_id'];
+$product_id = $_GET['Product_id'];
+// Now you can use these variables to run your query or perform any other actions
+// For example:
+// $sql = "INSERT INTO cart (user_id, product_id) VALUES ('$user_id', '$product_id')";
+// Execute your SQL query here
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,27 +38,6 @@ if (isset($_GET['id'])) {
                     <?php include "details.php"; ?>
                 </div>
             </div>
-            <hr>
-            <?php
-            if (isset($_SESSION['user']) && $_SESSION['user']['priority'] == 0) {
-                ?>
-                <!-- <button class="btn btn-warning"><a class="text-decoration-none text-white "
-                        href="addtocart.php?user_id=<?php echo $user_id ?>&Product_id=<?php echo $product_id ?>">Add To
-                        Cart</a></button> -->
-                <button class="btn btn-warning"><a class="text-decoration-none text-white "
-                        href="buyNow.php?user_id=<?php echo $user_id ?>&Product_id=<?php echo $product_id ?>">Buy
-                        Now</a></button>
-                <?php
-            } else /*if (empty($_COOKIE['token'])) */ { ?>
-                <p>
-                    <button class="btn btn-warning"><a class="text-decoration-none text-white "
-                            href="login.php?Product_id=<?php echo $product_id ?>">Add To
-                            Cart</a></button>
-                    <button class="btn btn-warning"><a class="text-decoration-none text-white "
-                            href="login.php?Product_id=<?php echo $product_id ?>">Buy Now</a></button>
-                </p>
-            <?php }
-            ?>
             <hr>
             <div class="row justify-content-around">
                 <?php include "relatedProducts.php"; ?>

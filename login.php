@@ -19,9 +19,6 @@ if (isset($_POST['login'])) {
             while ($row = $result->fetch_assoc()) {
                 if ($row['password'] === $_POST['password']) {
                     $key = 'azwxsedcrfvtgbynhumjizawxsecdrvftgbnyhjumikuigfvbczawxsecdrvftgybnhumjiuiefgvbwyvgbsdvwydtvbcwgjbuic';
-                    $payload['email'] = $row['email'];
-                    $payload['password'] = $row['password'];
-                    $payload['name'] = $row['name'];
                     $payload['id'] = $row['id'];
                     $payload = [
                         'sub' => $payload,
@@ -29,6 +26,11 @@ if (isset($_POST['login'])) {
                     ];
                     $token = JWT::encode($payload, $key, 'HS256');
                     setcookie("token", $token, time() + 3600, "/", "", true, true);
+                    if (isset($_GET['Product_id'])) {
+                        $product_id = $_GET['Product_id'];
+                        header('Location: buyNow.php?user_id=' . urlencode($row['id']) . '&Product_id=' . urlencode($product_id));
+                        exit;
+                    }
                     header('location: index.php');
                 } else {
                     $error = 'Wrong Password!';
@@ -52,13 +54,13 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <nav class="navbar navbar-expand-lg navbar-primary bg-primary ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">Totalkart</a>
+            <a class="navbar-brand text-white" href="index.php">Totalkart</a>
+            <a class="navbar-brand text-white" href="register.php">SignIn</a>
         </div>
     </nav>
-    <div class="container"
-        style="display: flex; justify-content: center; align-content: center; align-items: center; flex-wrap: wrap; margin-top:100px;">
+    <div class="container" style="margin-top:9%; margin-bottom:8.5%;">
         <form method="post">
             <?php
             if ($error !== '') {

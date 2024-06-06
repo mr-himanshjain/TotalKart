@@ -4,19 +4,19 @@ $result = $conn->query($sql);
 $ids = array();
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if ($row['type'] !== 'office chairs') {
+        if ($row['category'] !== 'furniture & mattresses') {
             $ids[] = $row["id"];
         }
     }
     $randomIds = array();
-    for ($i = 0; $i < 2; $i++) {
+    for ($i = 0; $i < 4; $i++) {
         $randomIndex = mt_rand(0, count($ids) - 1);
         $randomId = $ids[$randomIndex];
         if (!in_array($randomId, $randomIds)) {
             $randomIds[] = $randomId;
         }
     }
-    echo '<div class="d-flex justify-content-between ">';
+    echo '<div class="d-flex justify-content-between" style="flex-wrap: nowrap; overflow-x: auto;">';
     foreach ($randomIds as $id) {
         $sql = "SELECT p.*, pi.image_path 
                 FROM products p 

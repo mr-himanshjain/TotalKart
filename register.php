@@ -37,8 +37,7 @@ if (isset($_POST['submit'])) {
     <?php
     include ("indexNav.php");
     ?>
-    <div class="container"
-        style="display: flex; justify-content: center; align-content: center; align-items: center; flex-wrap: wrap; margin-top:100px;">
+    <div class="container" style="margin-top:7%; margin-bottom:6%;">
         <form method="post">
             <?php
             if ($error !== '') {

@@ -1,4 +1,8 @@
-<?php include ('config.php'); ?>
+<?php include ('config.php');
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,14 +41,19 @@
 
         // Insert product image into product_images table
         $target_dir = "uploads/";
-        $baseUrl = "http://localhost/totalkart/";
         if (isset($_FILES["productimage"]) && $_FILES["productimage"] !== null) {
             foreach ($_FILES["productimage"] as $key => $tmp_name) {
+                $factory = (new Factory)
+                    ->withServiceAccount('personal-datastorage-firebase-adminsdk-d9141-d9227e3e5c.json')
+                    ->withDatabaseUri('https://console.firebase.google.com/u/0/project/personal-datastorage/storage/personal-datastorage.appspot.com/files');
+                $storage = $factory->createStorage();
+                $storageClient = $storage->getStorageClient();
+                $defaultBucket = $storage->getBucket();
+
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($_FILES["productimage"]["name"], PATHINFO_EXTENSION));
-                $uniqueFilename = uniqid('img_') . '.' . $imageFileType;
-                $target_file = $target_dir . $uniqueFilename;
-
+                $imagePath = $_FILES["productimage"]["name"];
+                $target_file = $target_dir . $imagePath;
                 // Check if the file is an actual image
                 $check = getimagesize($_FILES["productimage"]["tmp_name"]);
                 if ($check === false) {
@@ -69,17 +78,22 @@
                 if ($uploadOk == 0) {
                     echo "Sorry, your file was not uploaded.";
                 } else {
-                    // If everything is ok, move the file to the target directory
                     if (move_uploaded_file($_FILES["productimage"]["tmp_name"], $target_file)) {
-
-                        $imageUrl = $baseUrl . "uploads/" . $uniqueFilename;
-
+                        $destinationPath = basename($imagePath);
+                        // Upload the image file to Firebase Storage
+                        $defaultBucket->upload(file_get_contents($target_file), [
+                            'name' => $destinationPath,
+                        ]);
+                        // Once uploaded, you can retrieve the access token (download URL) for the uploaded image
+                        $file = $defaultBucket->object($destinationPath);
+                        $expirationDate = new DateTime();
+                        $expirationDate->add(new DateInterval('P10Y'));
+                        $downloadUrl = $file->signedUrl($expirationDate);
                         // Insert image info into product_images table
                         $stmt = $conn->prepare("INSERT INTO product_images (product_id, image_path) VALUES (?,?)");
-                        $stmt->bind_param("ss", $productId, $imageUrl);
+                        $stmt->bind_param("ss", $productId, $downloadUrl);
                         $stmt->execute();
                         $stmt->close();
-
                         echo "Product and image information added successfully.";
                     } else {
                         echo "Sorry, there was an error uploading your file.";

@@ -3,6 +3,10 @@
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
+if (isset($_GET['Product_id'])) {
+    $id = $_GET['Product_id'];
+}
+$url = '/totalkart/buyNow.php';
 $sql = "SELECT p.*, pi.image_path 
         FROM products p 
         LEFT JOIN product_images pi ON p.id = pi.product_id 
@@ -10,6 +14,13 @@ $sql = "SELECT p.*, pi.image_path
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        if ($row['LikeCount'] == 1) {
+            $likeStatus = '';
+            $dislikeStatus = 'none';
+        } else {
+            $likeStatus = 'none';
+            $dislikeStatus = '';
+        }
         echo '<div class="productDetails" style="font-family: system-ui; font-size: 20px;">' .
             '<p><b>' . $row['name'] . '</b></p>' .
             '<p>' . $row['description'] . '</p>' .
@@ -17,6 +28,9 @@ if ($result->num_rows > 0) {
             '<p>' . $row['category'] . '</p>' .
             '<p>' . $row['type'] . '</p>' .
             '</div>';
+        if ($_SERVER['PHP_SELF'] !== $url) {
+            include 'favStatus.php';
+        }
     }
 } else {
     echo "no data found";

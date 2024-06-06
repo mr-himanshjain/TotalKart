@@ -4,7 +4,7 @@ $result = $conn->query($sql);
 $ids = array();
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        if ($row['type'] !== 'office chairs') {
+        if ($row['category'] !== 'furniture & mattresses') {
             $ids[] = $row["id"];
         }
     }
