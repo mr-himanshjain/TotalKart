@@ -91,7 +91,7 @@ if (isset($_POST['searchQuery'])) {
                             style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktc2VhcmNoIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0xMS43NDIgMTAuMzQ0YTYuNSA2LjUgMCAxIDAtMS4zOTcgMS4zOThoLS4wMDFxLjA0NC4wNi4wOTguMTE1bDMuODUgMy44NWExIDEgMCAwIDAgMS40MTUtMS40MTRsLTMuODUtMy44NWExIDEgMCAwIDAtLjExNS0uMXpNMTIgNi41YTUuNSA1LjUgMCAxIDEtMTEgMCA1LjUgNS41IDAgMCAxIDExIDAiLz4KPC9zdmc+') no-repeat; background-position: 10px center; background-size: 16px 16px; padding-left: 35px;">
                         <ul id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                             style="width:150%; left:-25%;"></ul>
-                        <div id="customDropdown" class="dropdown-menu" style="width:200%; display:none; left:-50%;">
+                        <div id="customDropdown" class="dropdown-menu" style="width:210%; display:none; left:-50%;">
                             <!-- Custom content here -->
                             <li>
                                 <div class="container">
@@ -143,14 +143,15 @@ if (isset($_POST['searchQuery'])) {
                     <?php
                     if (!isset($_COOKIE['token'])) {
                         ?>
-                        <li class="nav-item"><a class="nav-link text-white" href="login.php"><img src="person-circle.png"
-                                    style="width:25px; height:20px;" class="px-1" /> LogIn</a>
+                        <li class="nav-item"><a class="nav-link text-white" href="login.php"><img
+                                    src="./img/person-circle.png" style="width:25px; height:20px;" class="px-1" /> LogIn</a>
                         </li>
                         <?php
                     } else {
                         ?>
-                        <li class="nav-item"><a class="nav-link text-white" href="logout.php"><img src="person-circle.png"
-                                    style="width:25px; height:20px;" class="px-1" /> Logout</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="logout.php"><img
+                                    src="./img/person-circle.png" style="width:25px; height:20px;" class="px-1" />
+                                Logout</a></li>
                         <?php
                     }
                     ?>

@@ -44,7 +44,7 @@ use Kreait\Firebase\ServiceAccount;
         if (isset($_FILES["productimage"]) && $_FILES["productimage"] !== null) {
             foreach ($_FILES["productimage"] as $key => $tmp_name) {
                 $factory = (new Factory)
-                    ->withServiceAccount('personal-datastorage-firebase-adminsdk-d9141-d9227e3e5c.json')
+                    ->withServiceAccount('./impdoc/personal-datastorage-firebase-adminsdk-d9141-d9227e3e5c.json')
                     ->withDatabaseUri('https://console.firebase.google.com/u/0/project/personal-datastorage/storage/personal-datastorage.appspot.com/files');
                 $storage = $factory->createStorage();
                 $storageClient = $storage->getStorageClient();

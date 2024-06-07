@@ -33,13 +33,13 @@ if ($result->num_rows > 0) {
     ?>
     <div class="like" id="likeDiv" style="display:<?php echo $likeStatus ?>">
         <button type="button" onclick="like(<?php echo $id ?>)" style="border:0px; background-color:white;">
-            <img height="40px" width="40px" src="dislike.png" alt="">
+            <img height="40px" width="40px" src="./img/dislike.png" alt="">
             &nbsp;&nbsp;Add to favorites
         </button>
     </div>
     <div class="dislike" id="dislikeDiv" style="display:<?php echo $dislikeStatus ?>">
         <button type="button" onclick="dislike(<?php echo $id ?>)" style="border:0px; background-color:white;">
-            <img height="40px" width="40px" src="like.png" alt="">
+            <img height="40px" width="40px" src="./img/like.png" alt="">
             &nbsp;&nbsp; Remove from favorites
         </button>
     </div>

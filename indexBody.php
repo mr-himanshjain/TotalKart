@@ -14,7 +14,7 @@ include "slider.php";
         <?php } else { ?>
             <div class="d-flex user-details">
                 <div class="profile-img col-4">
-                    <img src="avatar.png" alt="profile-img" width="100%" height="100%" style="border-radius:100%">
+                    <img src="./img/avatar.png" alt="profile-img" width="100%" height="100%" style="border-radius:100%">
                 </div>
                 <div class="user-name col-8">
                     <p>Hii..! </p>
