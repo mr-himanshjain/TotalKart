@@ -1,10 +1,9 @@
 <?php
 include 'config.php';
-
 $query = $_GET['searchQuery'];
 
 // Prepare the SQL query with a wildcard for partial matching
-$sql = "SELECT * FROM products WHERE name LIKE '$query%'";
+$sql = "SELECT id, name FROM products WHERE name LIKE '$query%'";
 
 // Execute the query
 $result = $conn->query($sql);
@@ -25,7 +24,7 @@ if ($result->num_rows > 0) {
     // Encode the array as JSON and send it as the response
     echo json_encode($resultsArray);
 } else {
-    echo "0 results";
+    echo json_encode([]);
 }
 
 $conn->close();

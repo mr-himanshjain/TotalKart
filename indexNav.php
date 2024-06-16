@@ -70,32 +70,68 @@ if (isset($_POST['searchQuery'])) {
             font-size: 15px;
             color: #ff0000;
         }
+
+        /* Center the dropdown */
+        .dropdown-menu {
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+        }
+
+        /* Ensure the search bar maintains a consistent width */
+        .search-input {
+            width: 300px;
+            /* Adjust this value as needed */
+        }
+
+        /* Style the dropdown content */
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+        }
+
+        .dropdown-header {
+            display: block;
+            padding: .5rem 1.5rem;
+            margin-bottom: 0;
+            font-size: 1rem;
+            color: #ff0000;
+            white-space: nowrap;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg" style="background-color:#797EF6">
-        <div class="container-fluid d-flex ">
-            <div class="d-flex align-items-center">
+        <div class="container-fluid d-flex row">
+            <div class="col-xxl-3 col-md-2 col-sm-2 col-12">
                 <a class="navbar-brand" href="index.php">
                     <span style="font-weight:400; letter-spacing:0px; font-size: 22px; color:white">TOTAL </span>
                     <span style="font-weight:800; letter-spacing:1px; font-size: 22px; color:#2D2D38;">KART</span>
                 </a>
             </div>
-            <div style="width:80%">
+            <div class="col-xxl-3 col-md-2 col-sm-3 col-12">
                 <form class="d-flex justify-content-center" method="post">
-                    <div class="dropdown" style="width:50%">
-                        <input id="searchInput" class="form-control search-input bg-white " name="searchQuery"
+                    <div class="dropdown">
+                        <input id="searchInput" class="form-control search-input bg-white" name="searchQuery"
                             autocomplete="off" placeholder="Search" aria-label="Search" data-bs-toggle="dropdown"
                             aria-expanded="false"
-                            style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktc2VhcmNoIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0xMS43NDIgMTAuMzQ0YTYuNSA2LjUgMCAxIDAtMS4zOTcgMS4zOThoLS4wMDFxLjA0NC4wNi4wOTguMTE1bDMuODUgMy44NWExIDEgMCAwIDAgMS40MTUtMS40MTRsLTMuODUtMy44NWExIDEgMCAwIDAtLjExNS0uMXpNMTIgNi41YTUuNSA1LjUgMCAxIDEtMTEgMCA1LjUgNS41IDAgMCAxIDExIDAiLz4KPC9zdmc+') no-repeat; background-position: 10px center; background-size: 16px 16px; padding-left: 35px;">
+                            style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktc2VhcmNoIiB2aWV3Qm94PSIwIDAgMTYgMTYiPgogIDxwYXRoIGQ9Ik0xMS43NDIgMTAuMzQ0YTYuNSA2LjUgMCAxIDAtMS4zOTcgMS4zOThoLS4wMDFxLjA0NC4wNi4wOTguMTE1bDMuODUgMy44NWExIDEgMCAwIDAgMS40MTUtMS40MTRsLTMuODUtMy44NWExIDEgMCAwIDAtLjExNS0uMXpNMTIgNi41YTUuNSA1LjUgMCAxIDEtMTEgMCA1LjUgNS41IDAgMCAxIDExIDAiLz4KPC9zdmc+') no-repeat; background-position: 10px center; background-size: 16px 16px; padding-left: 35px; width: 300px;">
                         <ul id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                            style="width:150%; left:-25%;"></ul>
-                        <div id="customDropdown" class="dropdown-menu" style="width:210%; display:none; left:-50%;">
+                            style="width: min-content; left: 50%; transform: translateX(-50%);"></ul>
+                        <div id="customDropdown" class="dropdown-menu"
+                            style="width: 80vw; display: none; left: 50%; transform: translateX(-50%);">
                             <!-- Custom content here -->
                             <li>
                                 <div class="container">
-                                    <div class="row flex-nowrap justify-content-center ">
+                                    <div class="row flex-nowrap justify-content-center">
                                         <?php
                                         $sql = " SELECT category, subCategory FROM products WHERE subCategory IS NOT NULL AND subCategory != '' GROUP BY category, subCategory ORDER BY category, subCategory";
 
@@ -111,7 +147,7 @@ if (isset($_POST['searchQuery'])) {
                                                     }
                                                     $currentCategory = $row['category'];
                                                     // Start a new category div
-                                                    echo "<div class='col-2 text-center'>";
+                                                    echo "<div class='col-sm-1 mx-5 text-center'>";
                                                     echo "<h3 class='dropdown-header text-center'>" . ucfirst($currentCategory) . "</h3>";
                                                     // echo "<ul class='list-unstyled text-center'>";
                                                 }
@@ -129,10 +165,12 @@ if (isset($_POST['searchQuery'])) {
                             </li>
                         </div>
                     </div>
+
                 </form>
             </div>
-            <div>
-                <ul class="navbar-nav m-4 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <div class="col-xxl-3 col-md-2 col-sm-2 col-12">
+                <ul class="navbar-nav my-lg-0 navbar-nav-scroll"
+                    style="--bs-scroll-height: 100px; justify-content: end;">
                     <?php
                     if (isset($_COOKIE['token']) && $_SESSION['user']['priority'] == 1) {
                         ?>

@@ -1,7 +1,9 @@
 <?php
 require 'config.php';
 
-require 'vendor\autoload.php';
+// require 'vendor\autoload.php';
+require __DIR__ . '/vendor/autoload.php';
+
 use Firebase\JWT\JWT;
 
 $error = '';
@@ -25,7 +27,7 @@ if (isset($_POST['login'])) {
                         'exp' => time() + 3600,
                     ];
                     $token = JWT::encode($payload, $key, 'HS256');
-                    setcookie("token", $token, time() + 3600, "/", "", true, true);
+                    setcookie("token", $token, time() + 3600, "/", "", false, true);
                     if (isset($_GET['Product_id'])) {
                         $product_id = $_GET['Product_id'];
                         header('Location: buyNow.php?user_id=' . urlencode($row['id']) . '&Product_id=' . urlencode($product_id));
