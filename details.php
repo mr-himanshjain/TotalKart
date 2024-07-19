@@ -7,6 +7,7 @@ if (isset($_GET['Product_id'])) {
     $id = $_GET['Product_id'];
 }
 $url = '/totalkart/buyNow.php';
+// $url = '/buyNow.php';
 $sql = "SELECT p.*, pi.image_path 
         FROM products p 
         LEFT JOIN product_images pi ON p.id = pi.product_id 
@@ -23,7 +24,7 @@ if ($result->num_rows > 0) {
         }
         echo '<div class="productDetails" style="font-family: system-ui; font-size: 20px;">' .
             '<p><b>' . $row['name'] . '</b></p>' .
-            '<p>' . $row['description'] . '</p>' .
+            '<p style="font-size:16px;">' . $row['description'] . '</p>' .
             '<p>' . $row['price'] . '</p>' .
             '<p>' . $row['category'] . '</p>' .
             '<p>' . $row['type'] . '</p>' .

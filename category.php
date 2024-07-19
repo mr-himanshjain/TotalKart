@@ -11,7 +11,6 @@ if (isset($_COOKIE['token'])) {
     $decoded = JWT::decode($token, new key($key, 'HS256'));
     $user_id = $decoded->sub->id;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +26,12 @@ if (isset($_COOKIE['token'])) {
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .productDetails {
+            font-family: system-ui;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,7 +51,7 @@ if (isset($_COOKIE['token'])) {
                     ?>
                     <div class="container-fluid" style="padding-right:0px; padding-left:0px;">
                         <div class="container productViewmain">
-                            <div class="row my-5 p-5 viewAndDetail">
+                            <div class="row p-3 viewAndDetail">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <?php
                                     $sql = "SELECT p.*, pi.image_path FROM products p LEFT JOIN product_images pi ON p.id = pi.product_id WHERE p.id =" . $row['id'] . "";
@@ -56,13 +61,12 @@ if (isset($_COOKIE['token'])) {
                                             if (
                                                 $row1['category'] == 'television' || $row1['category'] == 'shoes' || $row1['category'] == 'dining set' || $row1['category'] == 'laptops' || $row1['category'] == 'sofas and sofa sets'
                                             ) { ?>
-                                                <div style="height:250px; width:300px;">
-                                                    <img src="<?php echo $row1['image_path']; ?>" alt="" height="110%" width="150%">
+                                                <div style="height:250px; width:300px; margin:auto;">
+                                                    <img src="<?php echo $row1['image_path']; ?>" alt="" height="90%" width="100%">
                                                 </div>
                                             <?php } else { ?>
-                                                <div style="height:250px; width:300px;">
-                                                    <img src="<?php echo $row1['image_path']; ?>" alt="" height="100%" width="70%"
-                                                        style="margin-left:50px">
+                                                <div style="height:250px; width:200px; margin:auto;">
+                                                    <img src="<?php echo $row1['image_path']; ?>" alt="" height="90%" width="100%">
                                                 </div>
                                                 <?php
                                             }
@@ -76,9 +80,9 @@ if (isset($_COOKIE['token'])) {
                                     $result2 = $conn->query($sql);
                                     if ($result2->num_rows > 0) {
                                         while ($row2 = $result2->fetch_assoc()) {
-                                            echo '<div class="productDetails" style="font-family: system-ui; font-size: 20px;">' .
+                                            echo '<div class="productDetails">' .
                                                 '<p><b>' . $row2['name'] . '</b></p>' .
-                                                '<p>' . $row2['description'] . '</p>' .
+                                                '<p style="font-size:16px;">' . $row2['description'] . '</p>' .
                                                 '<p>' . $row2['price'] . '</p>' .
                                                 '<p>' . $row2['category'] . '</p>' .
                                                 '<p>' . $row2['type'] . '</p>' .
@@ -88,7 +92,6 @@ if (isset($_COOKIE['token'])) {
                                     ?>
                                 </div>
                             </div>
-                            <hr>
                             <?php
                             if (isset($_SESSION['user']) && $_SESSION['user']['priority'] == 0) {
                                 ?>

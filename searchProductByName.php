@@ -20,14 +20,21 @@ if (isset($_GET['query'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category : <?php echo $category_name; ?></title>
+    <title>Search for <?php echo $productName ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .productDetails {
+            font-family: system-ui;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,11 +69,11 @@ if (isset($_GET['query'])) {
                                             if (
                                                 $row1['category'] == 'television' || $row1['category'] == 'shoes' || $row1['category'] == 'dining set' || $row1['category'] == 'laptops' || $row1['category'] == 'sofas and sofa sets'
                                             ) { ?>
-                                                <div style="height:250px; width:300px;">
+                                                <div style="height:250px; width:300px; margin:auto;">
                                                     <img src="<?php echo $row1['image_path']; ?>" alt="" height="100%" width="150%">
                                                 </div>
                                             <?php } else { ?>
-                                                <div style="height:250px; width:300px;">
+                                                <div style="height:250px; width:300px; margin:auto;">
                                                     <img src="<?php echo $row1['image_path']; ?>" alt="" height="100%" width="70%"
                                                         style="margin-left:50px">
                                                 </div>
@@ -82,9 +89,9 @@ if (isset($_GET['query'])) {
                                     $result2 = $conn->query($sql);
                                     if ($result2->num_rows > 0) {
                                         while ($row2 = $result2->fetch_assoc()) {
-                                            echo '<div class="productDetails" style="font-family: system-ui; font-size: 20px;">' .
+                                            echo '<div class="productDetails">' .
                                                 '<p><b>' . $row2['name'] . '</b></p>' .
-                                                '<p>' . $row2['description'] . '</p>' .
+                                                '<p style="font-size:16px;">' . $row2['description'] . '</p>' .
                                                 '<p>' . $row2['price'] . '</p>' .
                                                 '<p>' . $row2['category'] . '</p>' .
                                                 '<p>' . $row2['type'] . '</p>' .
@@ -123,6 +130,8 @@ if (isset($_GET['query'])) {
                 ?>
 
                 <?php
+            } else {
+                echo "<h1 style='font-weight:900; margin:auto'>No data found</h1>";
             }
             ?>
         </div>

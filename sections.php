@@ -12,7 +12,7 @@
             if (strlen($name) > 30) {
                 $name = substr($name, 0, 30) . '...'; // Truncate the string to 30 characters and add ellipsis
             }
-            echo '<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 card border-0 my-1" style="width: 300px; height: 360px; overflow:auto">' .
+            echo '<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 card my-1" style="width: 300px; height: 360px; overflow:auto">' .
                 '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
                 '<div style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center;">' .
                 '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .
@@ -42,7 +42,7 @@
             if (strlen($name) > 30) {
                 $name = substr($name, 0, 30) . '...'; // Truncate the string to 30 characters and add ellipsis
             }
-            echo '<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 card border-0 my-1" style="width: 300px; height: 360px; overflow:auto">' .
+            echo '<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 card my-1" style="width: 300px; height: 360px; overflow:auto">' .
                 '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
                 '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
                 '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .
@@ -72,7 +72,7 @@
             if (strlen($name) > 30) {
                 $name = substr($name, 0, 30) . '...'; // Truncate the string to 30 characters and add ellipsis
             }
-            echo '<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 card border-0 my-1" style="width: 300px; height: 360px; overflow:auto">' .
+            echo '<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4 col-12 card my-1" style="width: 300px; height: 360px; overflow:auto">' .
                 '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
                 '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
                 '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .

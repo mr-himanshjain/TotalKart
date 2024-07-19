@@ -56,10 +56,17 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-primary bg-primary ">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="index.php">Totalkart</a>
-            <a class="navbar-brand text-white" href="register.php">SignIn</a>
+    <nav class="navbar navbar-expand-lg" style="background-color:#797EF6">
+        <div class="container-fluid d-flex row jsutify-content-between">
+            <div class="col-xxl-3 col-md-2 col-sm-2 col-12">
+                <a class="navbar-brand" href="index.php">
+                    <span style="font-weight:400; letter-spacing:0px; font-size: 22px; color:white">TOTAL </span>
+                    <span style="font-weight:800; letter-spacing:1px; font-size: 22px; color:#2D2D38;">KART</span>
+                </a>
+            </div>
+            <div class="col-xxl-2 col-md-2 col-sm-2 col-12">
+                <a class="navbar-brand text-white" style="float: right;" href="register.php">SignIn</a>
+            </div>
         </div>
     </nav>
     <div class="container" style="margin-top:9%; margin-bottom:8.5%;">

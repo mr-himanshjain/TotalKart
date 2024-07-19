@@ -42,6 +42,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['screenWidth'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .slider-container {
+            width: 100%;
+            /* max-width: 600px; */
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
     <script>
         $(document).ready(function () {
             function updateScreenWidth() {
@@ -58,10 +102,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['screenWidth'])) {
                     }
                 });
             }
-            if ($(window).width() <= 768) {
+            if ($(window).width() <= 992) {
                 $('.firstcontainer').removeClass('container');
+                $('.firstCard').removeClass('container');
             } else {
                 $('.firstcontainer').addClass('container');
+                $('.firstCard').addClass('container');
             }
 
             // Update on page load
@@ -95,11 +141,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['screenWidth'])) {
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
             crossorigin="anonymous"></script>
         <script>
+            let currentIndex = 0;
+            function moveSlide(direction) {
+                const slider = document.querySelector('.slider');
+                const slides = document.querySelectorAll('.slide');
+                const totalSlides = slides.length;
+
+                currentIndex += direction;
+
+                if (currentIndex < 0) {
+                    currentIndex = totalSlides - 1;
+                } else if (currentIndex >= totalSlides) {
+                    currentIndex = 0;
+                }
+
+                const offset = -currentIndex * 100;
+                slider.style.transform = `translateX(${offset}%)`;
+            }
+
+
             function setScreenWidthCookie() {
                 document.cookie = "screenWidth=" + window.innerWidth + "; path=/";
             }
             window.onload = setScreenWidthCookie;
             window.onresize = setScreenWidthCookie;
+
         </script>
 
 

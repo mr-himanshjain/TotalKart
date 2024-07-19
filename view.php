@@ -18,13 +18,36 @@ if ($result->num_rows > 0) {
         if (
             $row['category'] == 'television' || $row['category'] == 'shoes' || $row['category'] == 'dining set' || $row['category'] == 'laptops' || $row['category'] == 'sofas and sofa sets'
         ) { ?>
-            <div style="height:250px; width:300px;">
-                <img src="<?php echo $row['image_path']; ?>" alt="" height="110%" width="150%">
+            <div id="content" style="height:250px; width:300px; margin:auto;">
+                <img id="thumbnail" class="clickable-image" src="<?php echo $row['image_path']; ?>" alt="" height="90%"
+                    width="100%">
             </div>
-        <?php } else { ?>
-            <div style="height:250px; width:300px;">
-                <img src="<?php echo $row['image_path']; ?>" alt="" height="100%" width="70%" style="margin-left:50px">
+            <div id="popup" class="popup hidden">
+                <span id="close-popup" class="close-popup">&times;</span>
+                <img id="popup-image" src="<?php echo $row['image_path']; ?>" alt="Full Size Image">
             </div>
+
+        <?php } elseif ($row['category'] == 'watches' || $row['category'] == 'power banks') { ?>
+            <div id="content" style="height:250px; width:200px; margin:auto;">
+                <img id="thumbnail" class="clickable-image" src="<?php echo $row['image_path']; ?>" alt="" height="90%"
+                    width="100%">
+            </div>
+            <div id="popup" class="popup hidden">
+                <span id="close-popup" class="close-popup">&times;</span>
+                <img id="popup-image" src="<?php echo $row['image_path']; ?>" alt="Full Size Image">
+            </div>
+
+            <?php
+        } else { ?>
+            <div id="content" style="height:250px; width:200px; margin:auto;">
+                <img id="thumbnail" class="clickable-image" src="<?php echo $row['image_path']; ?>" alt="" height="90%"
+                    width="100%">
+            </div>
+            <div id="popup" class="popup hidden">
+                <span id="close-popup" class="close-popup">&times;</span>
+                <img id="popup-image" src="<?php echo $row['image_path']; ?>" alt="Full Size Image">
+            </div>
+
             <?php
         }
     }

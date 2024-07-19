@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
         $ids[] = $row["id"];
     }
     $randomIds = array();
-    for ($i = 0; $i < 8; $i++) {
+    for ($i = 0; $i < 4; $i++) {
         $randomIndex = mt_rand(0, count($ids) - 1);
         $randomId = $ids[$randomIndex];
         if (!in_array($randomId, $randomIds)) {
@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
                 if (strlen($name) > 30) {
                     $name = substr($name, 0, 30) . '...'; // Truncate the string to 30 characters and add ellipsis
                 }
-                echo '<div class="col-lg-3 col-md-6 col-sm-12 card border-0 my-1" style="width: 300px; height: 360px; overflow:auto">' .
+                echo '<div class="col-lg-3 col-md-6 col-sm-12 card my-1" style="width: 300px; height: 360px; overflow:auto">' .
                     '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
                     '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
                     '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .

@@ -109,8 +109,8 @@ if (isset($_POST['searchQuery'])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color:#797EF6">
-        <div class="container-fluid d-flex row">
+    <nav class="navbar navbar-expand-lg" style="background-color:#797EF6; justify-content: center;">
+        <div class="container-fluid d-flex row p-0 text-center">
             <div class="col-xxl-3 col-md-2 col-sm-2 col-12">
                 <a class="navbar-brand" href="index.php">
                     <span style="font-weight:400; letter-spacing:0px; font-size: 22px; color:white">TOTAL </span>
@@ -170,7 +170,7 @@ if (isset($_POST['searchQuery'])) {
             </div>
             <div class="col-xxl-3 col-md-2 col-sm-2 col-12">
                 <ul class="navbar-nav my-lg-0 navbar-nav-scroll"
-                    style="--bs-scroll-height: 100px; justify-content: end;">
+                    style="--bs-scroll-height: 100px; justify-content: center;">
                     <?php
                     if (isset($_COOKIE['token']) && $_SESSION['user']['priority'] == 1) {
                         ?>
