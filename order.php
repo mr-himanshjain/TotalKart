@@ -27,7 +27,7 @@ $user_id = $_GET['user_id'];
 
 <body>
     <?php
-    include ("indexNav.php");
+    include("indexNav.php");
     ?>
     <div class="container py-4">
         <div style="display:flex; flex-wrap: wrap;">
@@ -65,11 +65,11 @@ $user_id = $_GET['user_id'];
                                     if (
                                         $row['category'] == 'television' || $row['category'] == 'shoes' || $row['category'] == 'dining set' || $row['category'] == 'laptops' || $row['category'] == 'sofas and sofa sets'
                                     ) { ?>
-                                        <div style="height:250px; width:300px; margin:auto;">
-                                            <img src="<?php echo $row['image_path']; ?>" alt="" height="100%" width="150%">
+                                        <div style="height:250px; width:fit-content;max-width:300px; margin:auto;">
+                                            <img src="<?php echo $row['image_path']; ?>" alt="" height="100%" width="100%">
                                         </div>
                                     <?php } else { ?>
-                                        <div style="height:250px; width:300px; margin:auto;">
+                                        <div style="height:250px; width:fit-content; margin:auto;">
                                             <img src="<?php echo $row['image_path']; ?>" alt="" height="100%" width="70%"
                                                 style="margin-left:50px">
                                         </div>
@@ -108,7 +108,7 @@ $user_id = $_GET['user_id'];
 
     </div>
     <?php
-    include ("indexFooter.php");
+    include("indexFooter.php");
     ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

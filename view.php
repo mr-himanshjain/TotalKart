@@ -1,4 +1,4 @@
-<?php include ('config.php'); ?>
+<?php include('config.php'); ?>
 <?php
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
         if (
             $row['category'] == 'television' || $row['category'] == 'shoes' || $row['category'] == 'dining set' || $row['category'] == 'laptops' || $row['category'] == 'sofas and sofa sets'
         ) { ?>
-            <div id="content" style="height:250px; width:300px; margin:auto;">
+            <div id="content" style="height:250px; width:fit-content; margin:auto;">
                 <img id="thumbnail" class="clickable-image" src="<?php echo $row['image_path']; ?>" alt="" height="90%"
                     width="100%">
             </div>
@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
             </div>
 
         <?php } elseif ($row['category'] == 'watches' || $row['category'] == 'power banks') { ?>
-            <div id="content" style="height:250px; width:200px; margin:auto;">
+            <div id="content" style="height:250px; width:fit-content; margin:auto;">
                 <img id="thumbnail" class="clickable-image" src="<?php echo $row['image_path']; ?>" alt="" height="90%"
                     width="100%">
             </div>

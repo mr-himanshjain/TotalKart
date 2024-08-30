@@ -36,7 +36,7 @@ if (isset($_COOKIE['token'])) {
 
 <body>
     <?php
-    include ("indexNav.php");
+    include("indexNav.php");
     ?>
     <div class="container py-4">
         <div style="display:flex; flex-wrap: wrap;">
@@ -61,11 +61,11 @@ if (isset($_COOKIE['token'])) {
                                             if (
                                                 $row1['category'] == 'television' || $row1['category'] == 'shoes' || $row1['category'] == 'dining set' || $row1['category'] == 'laptops' || $row1['category'] == 'sofas and sofa sets'
                                             ) { ?>
-                                                <div style="height:250px; width:300px; margin:auto;">
+                                                <div style="height:250px; width:fit-content; margin:auto;">
                                                     <img src="<?php echo $row1['image_path']; ?>" alt="" height="90%" width="100%">
                                                 </div>
                                             <?php } else { ?>
-                                                <div style="height:250px; width:200px; margin:auto;">
+                                                <div style="height:250px; width:fit-content; margin:auto;">
                                                     <img src="<?php echo $row1['image_path']; ?>" alt="" height="90%" width="100%">
                                                 </div>
                                                 <?php
@@ -125,7 +125,7 @@ if (isset($_COOKIE['token'])) {
         </div>
     </div>
     <?php
-    include ("indexFooter.php");
+    include("indexFooter.php");
     ?>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
