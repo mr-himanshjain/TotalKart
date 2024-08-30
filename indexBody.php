@@ -20,25 +20,25 @@ include "slider.php";
                 <div class="d-flex user-details">
                     <div class="profile-img mb-3">
                         <img src="./img/avatar.png" alt="profile-img" class="img-fluid rounded-circle"
-                            style="width: 100px; height: 100px;">
+                            style="width: 100%; height: 100%;">
                     </div>
                     <div class="user-name">
                         <p>Hii..! </p>
                         <p><?php echo $_SESSION['user']['name']; ?></p>
                     </div>
                 </div>
-                <div class="row user-action text-center justify-content-evenly">
-                    <div class="col-5 mb-2">
-                        <a href="order.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Your Order</a>
+                <div class="row user-action text-align-center d-flex justify-content-evenly">
+                    <div class="col-5">
+                        <a href="order.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Your Order</a>
                     </div>
-                    <div class="col-5 mb-2">
-                        <a href="wishlist.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Your List</a>
+                    <div class="col-5">
+                        <a href="wishlist.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Your List</a>
                     </div>
-                    <div class="col-5 mb-2">
-                        <a href="profile.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Account</a>
+                    <div class="col-5">
+                        <a href="profile.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Account</a>
                     </div>
-                    <div class="col-5 mb-2">
-                        <a href="favorites.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Favorites</a>
+                    <div class="col-5">
+                        <a href="favorites.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Favorites</a>
                     </div>
                 </div>
             <?php } ?>
@@ -79,6 +79,18 @@ include "slider.php";
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="small-screen-index-div mx-2" style="display: <?= $hidesecondDivs; ?>">
     <div class="d-flex justify-content-evenly my-3">
         <div class="col-xxl-7 col-md-7 col-sm-7 col-12 profile-section usersection">
@@ -98,25 +110,25 @@ include "slider.php";
                 <div class="d-flex user-details">
                     <div class="profile-img mb-3">
                         <img src="./img/avatar.png" alt="profile-img" class="img-fluid rounded-circle"
-                            style="width: 100px; height: 100px;">
+                            style="width: 100%; height: 100%;">
                     </div>
                     <div class="user-name">
                         <p>Hii..! </p>
                         <p><?php echo $_SESSION['user']['name']; ?></p>
                     </div>
                 </div>
-                <div class="row user-action2 user-action3  text-center justify-content-evenly">
-                    <div class="col-5 mb-2">
-                        <a href="order.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Your Order</a>
+                <div class="row user-action2 user-action3 text-center d-flex justify-content-evenly">
+                    <div class="col-5">
+                        <a href="order.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Your Order</a>
                     </div>
-                    <div class="col-5 mb-2">
-                        <a href="wishlist.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Your List</a>
+                    <div class="col-5">
+                        <a href="wishlist.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Your List</a>
                     </div>
-                    <div class="col-5 mb-2">
-                        <a href="profile.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Account</a>
+                    <div class="col-5">
+                        <a href="profile.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Account</a>
                     </div>
-                    <div class="col-5 mb-2">
-                        <a href="favorites.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn w-75">Favorites</a>
+                    <div class="col-5">
+                        <a href="favorites.php?user_id=<?php echo $_SESSION['user']['id'] ?>" class="btn">Favorites</a>
                     </div>
                 </div>
             <?php } ?>

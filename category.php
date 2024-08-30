@@ -49,7 +49,7 @@ if (isset($_COOKIE['token'])) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     ?>
-                    <div class="container-fluid" style="padding-right:0px; padding-left:0px;">
+                    <div class="container-fluid" style="padding-right:0px; padding-left:0px; background-color: #f9f9f9;">
                         <div class="container productViewmain">
                             <div class="row p-3 viewAndDetail">
                                 <div class="col-lg-6 col-md-6 col-sm-12">

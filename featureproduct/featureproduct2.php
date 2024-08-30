@@ -28,21 +28,21 @@ if ($result->num_rows > 0) {
                 if ($type == 'mattress' || $type == 'sofas and sofa sets' || $type == 'dining set') {
                     echo '<div class="col-lg-3 col-md-6 col-sm-12 p-2 card border-0" style="width: 100%; overflow:auto">' .
                         '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
-                        '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
+                        '<div class="featureProductCard">' .
                         '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: cover;"/>' .
                         '</div></a>' .
                         '</div> ';
                 } else if ($type == 'shoes' || $type == 'television' || $type == 'headphone / earphone' || $type == 'mobile' || $type == 'watches' || $type == 'laptops') {
                     echo '<div class="col-lg-3 col-md-6 col-sm-12 p-2 card border-0" style="width: 100%; overflow:auto">' .
                         '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
-                        '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
+                        '<div class="featureProductCard">' .
                         '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .
                         '</div></a>' .
                         '</div> ';
                 } else {
                     echo '<div class="col-lg-3 col-md-6 col-sm-12 p-2 card border-0" style="width: 100%; overflow:auto">' .
                         '<a style="color: gray; text-decoration: none;" href="productView.php?id=' . $row['id'] . '">' .
-                        '<div style="width: 100%; padding-top:10px; height: 200px; display: flex; justify-content: center; align-items: center;">' .
+                        '<div class="featureProductCard">' .
                         '<img src="' . $row['image_path'] . '" class="card-img-top" alt="Wild Landscape" style="max-width: 100%; max-height: 100%; object-fit: contain;"/>' .
                         '</div></a>' .
                         '</div> ';

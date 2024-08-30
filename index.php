@@ -1,4 +1,4 @@
-<?php include ('config.php');
+<?php include('config.php');
 session_start();
 
 $hideDivs = '';
@@ -123,16 +123,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['screenWidth'])) {
 
 <body>
     <?php
-    include ("indexNav.php");
+    include("indexNav.php");
     ?>
-    <div class="container-fluid" style="padding-right:0px; padding-left:0px;">
+    <div class="container-fluid" style="padding-right:0px; padding-left:0px; background-color: #fbfbfb;">
         <div class="firstcontainer container">
             <?php
             include "indexBody.php";
             ?>
         </div>
         <?php
-        include ("indexFooter.php");
+        include("indexFooter.php");
         ?>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

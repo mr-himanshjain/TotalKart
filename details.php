@@ -24,11 +24,11 @@ if ($result->num_rows > 0) {
         }
         echo '<div class="productDetails" style="font-family: system-ui; font-size: 20px;">' .
             '<p><b>' . $row['name'] . '</b></p>' .
-            '<p style="font-size:16px;">' . $row['description'] . '</p>' .
-            '<p>' . $row['price'] . '</p>' .
-            '<p>' . $row['category'] . '</p>' .
+            '<p style="font-size:16px; margin-bottom:38px;">' . $row['description'] . '</p>' .
+            '<div style="line-height:14px;"><p style="font-weight:bold;">₹ ' . $row['price'] . '</p>' .
+            '<p style="color:#afafaf;">' . $row['category'] . '</p>' .
             '<p>' . $row['type'] . '</p>' .
-            '</div>';
+            '</div></div>';
         if ($_SERVER['PHP_SELF'] !== $url) {
             include 'favStatus.php';
         }

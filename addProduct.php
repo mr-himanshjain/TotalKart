@@ -105,7 +105,7 @@ use Kreait\Firebase\ServiceAccount;
     }
 
     ?>
-    <div class="container-fluid" style="padding-right:0px; padding-left:0px;">
+    <div class="container-fluid" style="padding-right:0px; padding-left:0px; background-color: #f9f9f9;">
         <div class="container">
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
                 enctype="multipart/form-data">

@@ -57,7 +57,7 @@ $user_id = $_GET['user_id'];
                     $timestamp = strtotime($dateString);
                     $formattedDate = date('l, F j, Y g:i A', $timestamp);
                     ?>
-                    <div class="container-fluid" style="padding-right:0px; padding-left:0px;">
+                    <div class="container-fluid" style="padding-right:0px; padding-left:0px; background-color: #f9f9f9;">
                         <div class="container productViewmain">
                             <div class="row my-1 p-1 viewAndDetail">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -82,11 +82,11 @@ $user_id = $_GET['user_id'];
                                     echo '<div class="productDetails" style="font-family: system-ui; font-size: 20px;">' .
                                         '<p><b>' . $row['name'] . '</b></p>' .
                                         '<p style="font-size:16px;">' . $row['description'] . '</p>' .
-                                        '<p><span>Price:</span><b>    ' . $row['price'] . '</b></p>' .
+                                        '<p><span>Price:</span><b>   ₹ ' . $row['price'] . '</b></p>' .
                                         '<p><span>Category:</span><b>    ' . $row['category'] . '</b></p>' .
                                         '<p><span>Type:</span><b>    ' . $row['type'] . '</b></p>' .
                                         '<p><span>Quantity:</span><b>    ' . $row['quantity'] . '</b></p>' .
-                                        '<p><span>Total Amount:</span><b>    ' . $row['price'] * $row['quantity'] . '</b></p><br>' .
+                                        '<p><span>Total Amount:</span><b>   ₹ ' . $row['price'] * $row['quantity'] . '</b></p><br>' .
                                         '<p><span>Order Date:</span><b>    ' . $formattedDate . '</b></p>' .
                                         '</div>';
                                     ?>

@@ -84,7 +84,7 @@ if (isset($_GET['id'])) {
     <?php
     include ("indexNav.php");
     ?>
-    <div class="container-fluid" style="padding-right:0px; padding-left:0px;">
+    <div class="container-fluid" style="padding-right:0px; padding-left:0px; background-color: #f9f9f9;">
         <div class="container productViewmain">
             <div class="row my-5 p-3 viewAndDetail">
                 <div class="col-lg-6 col-md-6 col-sm-12">
