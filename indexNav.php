@@ -127,11 +127,10 @@ if (isset($_POST['searchQuery'])) {
                         <ul id="searchResults" class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                             style="width: min-content; left: 50%; transform: translateX(-50%);"></ul>
                         <div id="customDropdown" class="dropdown-menu"
-                            style="width: 80vw; display: none; left: 50%; transform: translateX(-50%);">
-                            <!-- Custom content here -->
+                            style="width: fit-content; display: none; left: 50%; transform: translateX(-50%);">
                             <li>
                                 <div class="container">
-                                    <div class="row flex-nowrap justify-content-center">
+                                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
                                         <?php
                                         $sql = " SELECT category, subCategory FROM products WHERE subCategory IS NOT NULL AND subCategory != '' GROUP BY category, subCategory ORDER BY category, subCategory";
 
@@ -141,23 +140,24 @@ if (isset($_POST['searchQuery'])) {
                                             $currentCategory = null;
                                             while ($row = $result->fetch_assoc()) {
                                                 if ($currentCategory != $row['category']) {
-                                                    // Close the previous category div
                                                     if ($currentCategory !== null) {
                                                         echo "</ul></div>";
                                                     }
                                                     $currentCategory = $row['category'];
                                                     // Start a new category div
                                                     echo "<div class='col-sm-1 mx-5 text-center'>";
-                                                    echo "<h3 class='dropdown-header text-center'>" . ucfirst($currentCategory) . "</h3>";
+                                                    // echo "<h3 class='dropdown-header text-center'>" . ucfirst($currentCategory) . "</h3>";
+                                                    echo "<a class='dropdown-item' href='category.php?category=" . urlencode(htmlspecialchars($currentCategory)) . "'><h3 class='dropdown-header text-center'>" . ucfirst($currentCategory) . "</h3></a>";
                                                     // echo "<ul class='list-unstyled text-center'>";
                                                 }
                                                 // Display the subcategory
-                                                $categoryUrl = urlencode(htmlspecialchars($currentCategory));
-                                                $subCategoryUrl = urlencode($row['subCategory']);
-                                                echo "<a class='dropdown-item' href='category.php?category=" . $categoryUrl . "&subCategory=" . $subCategoryUrl . "'>" . ucfirst(htmlspecialchars($row['subCategory'])) . "</a>";
+                                                // $categoryUrl = urlencode(htmlspecialchars($currentCategory));
+                                                // $subCategoryUrl = urlencode($row['subCategory']);
+                                                // echo "<a class='dropdown-item' href='category.php?category=" . $categoryUrl . "&subCategory=" . $subCategoryUrl . "'>" . ucfirst(htmlspecialchars($row['subCategory'])) . "</a>";
                                             }
                                             // Close the last category div
-                                            echo "</ul></div>";
+                                            // echo "</ul>";
+                                            echo "</div>";
                                         }
                                         ?>
                                     </div>

@@ -5,7 +5,7 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 $category = $_GET['category'];
-$subCategory = $_GET['subCategory'];
+// $subCategory = $_GET['subCategory'];
 if (isset($_COOKIE['token'])) {
     $token = $_COOKIE['token'];
     $decoded = JWT::decode($token, new key($key, 'HS256'));
@@ -44,7 +44,11 @@ if (isset($_COOKIE['token'])) {
             $sql = "SELECT p.*, pi.image_path 
                 FROM products p 
                 LEFT JOIN product_images pi ON p.id = pi.product_id 
-                WHERE p.category = '$category' AND p.subCategory = '$subCategory'";
+                WHERE p.category = '$category'";
+            // $sql = "SELECT p.*, pi.image_path 
+            //     FROM products p 
+            //     LEFT JOIN product_images pi ON p.id = pi.product_id 
+            //     WHERE p.category = '$category' AND p.subCategory = '$subCategory'";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
